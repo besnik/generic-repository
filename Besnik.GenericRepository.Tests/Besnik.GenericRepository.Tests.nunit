@@ -1,0 +1,9 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Debug" />
+  <Config name="Debug" binpathtype="Auto" runtimeFramework="any">
+    <assembly path="bin\Debug\Besnik.GenericRepository.Tests.dll" />
+  </Config>
+  <Config name="Release" binpathtype="Auto">
+    <assembly path="bin\Release\Besnik.GenericRepository.Tests.dll" />
+  </Config>
+</NUnitProject>

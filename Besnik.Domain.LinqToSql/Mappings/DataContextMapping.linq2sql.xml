@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Database Name="Besnik.GenericRepository2" xmlns="http://schemas.microsoft.com/linqtosql/mapping/2007">
+	<Table Name="Customers">
+		<Type Name="Besnik.Domain.Customer">
+			<Column Name="Id" Member="Id" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" IsPrimaryKey="true" />
+			<Column Name="Name" Member="Name" DbType="NVarChar(255)" />
+			<Column Name="Age" Member="Age" DbType="Int NOT NULL" />
+		</Type>
+	</Table>
+</Database>

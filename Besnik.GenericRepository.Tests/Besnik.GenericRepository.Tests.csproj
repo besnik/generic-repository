@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1AA5D032-863A-4952-A00A-E48475E9CB9D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Besnik.GenericRepository.Tests</RootNamespace>
+    <AssemblyName>Besnik.GenericRepository.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=2.1.6.714, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Entity.CTP, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.Data.Entity.CTP.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.0.9122, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Factory\Factory.cs" />
+    <Compile Include="Fixtures\EntityFrameworkFixtures\EntityFrameworkCustomerRepositoryFixture.cs" />
+    <Compile Include="Fixtures\GenericFixtures\BaseUnitOfWorkFixture.cs" />
+    <Compile Include="Fixtures\GenericFixtures\GenericCustomerRepositoryFixture.cs" />
+    <Compile Include="Fixtures\LinqToSqlFixtures\LinqToSqlCustomerRepositoryFixture.cs" />
+    <Compile Include="Fixtures\NHibernateFixtures\NHibernateCriteriaFixture.cs" />
+    <Compile Include="Fixtures\NHibernateFixtures\NHibernateUnitOfWorkFixture.cs" />
+    <Compile Include="Fixtures\NHibernateFixtures\NHibernateCustomerRepositoryFixture.cs" />
+    <Compile Include="Mocks\SpecificationLocatorStub.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Besnik.Domain.EntityFramework\Besnik.Domain.EntityFramework.csproj">
+      <Project>{B3288165-24F4-49AF-A7B5-79B027F82EC8}</Project>
+      <Name>Besnik.Domain.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Besnik.Domain\Besnik.Domain.csproj">
+      <Project>{D5B52DDB-C986-4055-9CAC-5526F42B8A93}</Project>
+      <Name>Besnik.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Besnik.GenericRepository.EntityFramework\Besnik.GenericRepository.EntityFramework.csproj">
+      <Project>{5630007D-50C9-4D99-A734-BBE7451B1C3D}</Project>
+      <Name>Besnik.GenericRepository.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Besnik.GenericRepository.LinqToSql\Besnik.GenericRepository.LinqToSql.csproj">
+      <Project>{207ADEBC-CCE9-4ACC-AEA8-E086BB23A638}</Project>
+      <Name>Besnik.GenericRepository.LinqToSql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Besnik.GenericRepository.NHibernate\Besnik.GenericRepository.NHibernate.csproj">
+      <Project>{DCC5973E-B6BC-4A41-8996-ED4AFBEEB318}</Project>
+      <Name>Besnik.GenericRepository.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Besnik.GenericRepository\Besnik.GenericRepository.csproj">
+      <Project>{1C33F903-59B8-437C-8637-94CB394CA970}</Project>
+      <Name>Besnik.GenericRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Besnik.Domain.LinqToSql\Besnik.Domain.LinqToSql.csproj">
+      <Project>{C6CC3E66-9506-43D7-BE8F-0C49D59C34E3}</Project>
+      <Name>Besnik.Domain.LinqToSqlRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Besnik.Domain.NHibernate\Besnik.Domain.NHibernate.csproj">
+      <Project>{ABDD5544-3CAA-49FB-A06A-895585BA55B2}</Project>
+      <Name>Besnik.Domain.NHibernateRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\App.config" />
+    <None Include="Config\NHibernate.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Besnik.GenericRepository.Tests.nunit" />
+    <None Include="Config\NHibernate.sqlite.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

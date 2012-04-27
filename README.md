@@ -7,36 +7,37 @@ For detailed discussion please see [Introduction].
 It is lightweight thin layer between domain model and data mappers (e.g. ORMs like NHibernate, Linq2Sql or Entity Framework). The goal is to avoid recreating same repositories over and over again in all projects where repository pattern is used. Designed with respect to DDD (domain driven design). Implements Filter pattern and best used with factory and/or Service locator patter (DI/IoC). I used the name specification, but it turned out to be confusing of other design pattern, so from now on I call it filters.
 
 Example of usage:
+``` java
+var customer = new Customer { Name = "Peter Bondra", Age = 37 };
+var specificationLocator = this.IoC.Resolve<ISpecificationLocator>();
 
-    var customer = new Customer { Name = "Peter Bondra", Age = 37 };
-    var specificationLocator = this.IoC.Resolve<ISpecificationLocator>();
-    
-    using ( var unitOfWork = this.IoC.Resolve<IUnitOfWorkFactory>().BeginUnitOfWork() )
-    {
-      ICustomerRepository cr = this.IoC.Resolve<ICustomerRepository>(unitOfWork, specificationLocator);
-      
-      using ( var transaction = unitOfWork.BeginTransaction() )
-      {
-        cr.Insert(customer);
-        transaction.Commit();
-      }
-    }
-
+using ( var unitOfWork = this.IoC.Resolve<IUnitOfWorkFactory>().BeginUnitOfWork() )
+{
+  ICustomerRepository cr = this.IoC.Resolve<ICustomerRepository>(unitOfWork, specificationLocator);
+  
+  using ( var transaction = unitOfWork.BeginTransaction() )
+  {
+	cr.Insert(customer);
+	transaction.Commit();
+  }
+}
+```
 
 # Fluent filter pattern
 The generic repository natively supports filter pattern that decouples the filter logic (queries) from the repository. It contains extension point for your custom filters and the filter interface (called specification) shall be implemented using fluent interface pattern.
 
 Example of fluent filter pattern usage (I call it specification in the code):
-    ICustomerRepository customerRepository = 
-      this.IoC.Resolve<ICustomerRepository>(unitOfWork, specificationLocator);
-    
-    IList<Customer> = customerRepository.Specify<ICustomerSpecification>()
-      .NameStartsWith("Peter")
-      .OlderThan(18)
-      .ToResult()
-      .Take(3)
-      .ToList();
+``` java
+ICustomerRepository customerRepository = 
+  this.IoC.Resolve<ICustomerRepository>(unitOfWork, specificationLocator);
 
+IList<Customer> = customerRepository.Specify<ICustomerSpecification>()
+  .NameStartsWith("Peter")
+  .OlderThan(18)
+  .ToResult()
+  .Take(3)
+  .ToList();
+```
 
 # CRUD and DRY
 Don't repeat yourself. GenericRepository provides implementation of repository patter, so you can focus on your domain model and business rules, instead of fighting with specific data mapper technology (some knowledge is still required for doing mapping configuration). You can start loading and saving data to the data storage extremly fast. If the Generic repository does not support requested functionalit natively, you can still very easily use underlying data mapper.

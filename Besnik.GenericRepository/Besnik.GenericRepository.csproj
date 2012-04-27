@@ -52,6 +52,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\Besnik.GenericRepository.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Exceptions\GenericRepositoryException.cs" />

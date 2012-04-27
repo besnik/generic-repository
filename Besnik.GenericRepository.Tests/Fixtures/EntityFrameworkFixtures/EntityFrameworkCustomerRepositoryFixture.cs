@@ -15,7 +15,7 @@ namespace Besnik.GenericRepository.Tests
 	{
 		protected override IUnitOfWorkFactory CreateUnitOfWorkFactory()
 		{
-			var dbInitializer = new RecreateDatabaseIfModelChanges<DbContext>();
+			var dbInitializer = new DropCreateDatabaseIfModelChanges<DbContext>();
 			Database.SetInitializer(dbInitializer);
 
 			return new EntityFrameworkUnitOfWorkFactory(
@@ -29,7 +29,7 @@ namespace Besnik.GenericRepository.Tests
 			using (var uow = this.UnitOfWorkFactory.BeginUnitOfWork())
 			{
 				var dbContext = (uow as EntityFrameworkUnitOfWork).DbContext;
-				dbContext.Database.EnsureInitialized();
+				dbContext.Database.Initialize(false);
 
 				// clear db manually as EF 4 Extensions CTP4 does not contain any functionality
 				// except deleting and creating database which is not what we want.
@@ -90,11 +90,11 @@ namespace Besnik.GenericRepository.Tests
 		/// <returns></returns>
 		protected virtual DbModel GetDbModel()
 		{
-			var modelBuilder = new ModelBuilder();
+			var modelBuilder = new DbModelBuilder();
 
 			modelBuilder.Configurations.Add(new CustomerConfiguration());
 
-			return modelBuilder.CreateModel();
+			return modelBuilder.Build(new DbProviderInfo("System.Data.SqlClient", "2008"));
 		}
 	}
 }

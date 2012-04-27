@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Besnik.Domain.EntityFramework
 {
-	public class CustomerConfiguration : EntityConfiguration<Customer>
+	public class CustomerConfiguration : EntityTypeConfiguration<Customer>
 	{
 		/// <summary>
 		/// Constructor.
@@ -14,17 +14,21 @@ namespace Besnik.Domain.EntityFramework
 		/// </remarks>
 		public CustomerConfiguration()
 		{
-			Property(c => c.Id).IsIdentity();
+			HasKey<int>(c => c.Id);
 			Property(c => c.Name).HasMaxLength(255);
 
-			this.MapHierarchy(
-				c => new
-				{
-					Id = c.Id,
-					Name = c.Name,
-					Age = c.Age
+			this.Map(
+				config => {
+					config.Properties(c => new
+					{
+						Id = c.Id,
+						Name = c.Name,
+						Age = c.Age
+					});
+
+					config.ToTable("Customers");
 				}
-				).ToTable("Customers");
+				);
 		}
 	}
 }

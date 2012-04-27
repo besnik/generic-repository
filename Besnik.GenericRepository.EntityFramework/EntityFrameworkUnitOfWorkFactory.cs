@@ -31,7 +31,7 @@ namespace Besnik.GenericRepository.EntityFramework
 		{
 			return new DbContext(
 				this.ConnectionString
-				, this.DbModel
+				, this.DbModel.Compile()
 				);
 		}
 

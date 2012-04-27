@@ -1,6 +1,6 @@
 # Generic Repository
 GenericRepository project is generic implementation of Repository pattern in .NET.
-For detailed discussion please see [Introduction].
+For detailed discussion please see project's wiki pages and especialy [Introduction](https://github.com/besnik/generic-repository/wiki/Introduction).
 
 
 # Lightweight

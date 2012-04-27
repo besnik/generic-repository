@@ -73,7 +73,7 @@ Open to use in commerce and non-commerce projects.
 # Supported data mappers
   * NHibernate
   * Linq2Sql
-  * Entity Framework 4.0 with EF Feature CTP4
+  * Entity Framework
 
 Plan is to implement suppport for
   * NoSql data mappers like Mongo, RavenDb, CouchDB, etc.
